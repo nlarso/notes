@@ -8,8 +8,10 @@ SHOW STATUS LIKE 'Last_Query_Cost';
 ```
 
 #### Viewing Database Index Size
-> I've used this a little for checking how much memory is used when I add an index.
-> I start by creating this function:
+I've used this a little for checking how much memory is used when I add an index.
+I start by creating this function:
+
+
 ```
 DELIMITER $
 DROP FUNCTION IF EXISTS byteResize$
@@ -31,8 +33,14 @@ RETURN CONCAT(ROUND(bytes, 2), ' ', ELT(unit, '', 'K', 'M', 'G', 'T'), 'b');
 END$
 DELIMITER ;
 ```
-> Then I run this query to retrieve the information I want:
+
+
+Then I run this query to retrieve the information I want:
+
+
 ```
+
+
 SELECT TABLE_NAME AS "Table",
        TABLE_ROWS AS "Rows",
        byteResize(DATA_LENGTH) AS "Data Size",
