@@ -33,7 +33,9 @@ BEGIN
 RETURN CONCAT(ROUND(bytes, 2), ' ', ELT(unit, '', 'K', 'M', 'G', 'T'), 'b');
 
 END$
-DELIMITER;
+
+
+DELIMITER ;
 ```
 
 Then I run this query to retrieve the information I want:
@@ -47,5 +49,5 @@ SELECT TABLE_NAME AS "Table",
        byteResize(DATA_LENGTH+ INDEX_LENGTH) AS "Total Size",
        TRIM(TRAILING ', ' FROM CONCAT_WS(', ', ENGINE, TABLE_COLLATION, CREATE_OPTIONS)) AS "Type"
 FROM information_schema.TABLES
-WHERE information_schema.TABLES.table_schema = 'ess_dev';
+WHERE information_schema.TABLES.table_schema = 'YOUR_DATABASE_NAME';
 ```
