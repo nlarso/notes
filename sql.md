@@ -32,6 +32,8 @@ END$
 DELIMITER ;
 ```
 > Then I run this query to retrieve the information I want:
+
+
 ```
 SELECT TABLE_NAME AS "Table",
        TABLE_ROWS AS "Rows",
